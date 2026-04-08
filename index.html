@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Five-Star Gram Store [Pvt.Ltd] 🍟</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header>
+  <nav class="nav">
+    <div class="logo">Five-Star Gram Store Pvt.Ltd </div>
+    <div class="nav-links">
+      <a href="#products-section"> Shop</a>
+      <a href="#about-section"> About</a>
+      <a href="#location-section"> Location</a>
+      <a href="#bank-section"> Bank</a>
+      <a href="#contact-section"> Contact</a>
+    </div>
+    <div class="nav-right">
+      <div class="store-status"><div class="dot"></div>24hrs Open</div>
+      <button class="cart-btn" onclick="toggleCart()" aria-label="Cart">
+        🛒<span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-inner">
+    <h1>Fresh Bites,<br>Delivered Fast! 🚀</h1>
+    <p>Snacks · Sweets · Drinks — Order via WhatsApp in seconds</p>
+    <div class="hero-badges">
+      <div class="hero-badge">⚡ Instant WhatsApp Orders</div>
+      <div class="hero-badge">🚚 Delivery Available</div>
+      <div class="hero-badge">📦 Wholesale Available</div>
+    </div>
+  </div>
+  <svg class="hero-wave" viewBox="0 0 1440 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,30 C240,70 480,-10 720,30 C960,70 1200,-10 1440,30 L1440,60 L0,60 Z" fill="#FFF8F0"/>
+  </svg>
+</section>
+
+<!-- ─── SEARCH ─── -->
+<div class="search-wrap">
+  <div class="search-box">
+    <span>🔍</span>
+    <input type="text" id="searchInput" placeholder="Search snacks, sweets, drinks..." oninput="renderProducts()" />
+    <button class="search-btn" onclick="renderProducts()">Go</button>
+  </div>
+</div>
+
+<div class="page-content">
+
+<!-- ─── STATS BAR ─── -->
+<div class="stats-bar">
+  <div class="stat-card"><div><div class="stat-label">Products</div><div class="stat-val">80+</div></div></div>
+  <div class="stat-card"><div><div class="stat-label">Delivery</div><div class="stat-val">Colombo</div></div></div>
+  <div class="stat-card"><div><div class="stat-label">Wholesale</div><div class="stat-val">Bulk Orders</div></div></div>
+  <div class="stat-card"><div><div class="stat-label">Hours</div><div class="stat-val"> 9.00am To 7.30pm </div></div></div>
+</div>
+
+<!-- ─── TABS ─── -->
+<div class="tabs-section" id="products-section">
+  <div class="order-type-tabs" id="orderTypeTabs">
+    <button class="order-type-tab active" id="tab-retail" onclick="setOrderType('retail', this)">
+      <span class="tab-icon">🛒</span>
+      <span class="tab-label">Retail<span class="tab-sub">Single items ( less than 5 Pcs )</span></span>
+    </button>
+    <button class="order-type-tab" id="tab-wholesale" onclick="setOrderType('wholesale', this)">
+      <span class="tab-icon">📦</span>
+      <span class="tab-label">Wholesale<span class="tab-sub">Bulk orders</span></span>
+    </button>
+  </div>
+  <div class="tab-divider"></div>
+  <div class="cat-tabs" id="catTabs"></div>
+</div>
+
+<!-- ─── PRODUCTS ─── -->
+<div class="products-grid" id="productsGrid"></div>
+
+<!-- ─── ABOUT US ─── -->
+<section class="about-section" id="about-section">
+  <div class="about-inner">
+    <div class="section-header">
+      <div class="section-title">🏪 About Us</div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Welcome to <strong>Five-Star Gram Store (Pvt.) Ltd.</strong> — Colombo's most trusted destination for premium snacks, sweets, and beverages. Rooted in the heart of Pettah, we've been serving customers with the finest quality gram products and refreshing drinks since our founding.</p>
+        <p>We believe everyone deserves <strong>high-quality snacks at fair prices.</strong> Whether you're stocking up for an event, running a business, or simply craving something delicious, we have you covered — from individual retail packs to large wholesale orders.</p>
+        <p>Our <strong>WhatsApp ordering system</strong> makes it incredibly easy to browse, order, and track your delivery from wherever you are. We deliver across Colombo and Can Arrange Delivery For Outside Colombo </p>
+        <div class="about-highlights">
+          <div class="highlight-item">
+            <div class="highlight-icon">🏅</div>
+            <div>
+              <div class="highlight-title">Premium Quality</div>
+              <div class="highlight-desc">Hand-selected products, freshness guaranteed</div>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">💰</div>
+            <div>
+              <div class="highlight-title">Best Prices</div>
+              <div class="highlight-desc">Competitive retail & wholesale pricing</div>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">⚡</div>
+            <div>
+              <div class="highlight-title">Fast Delivery</div>
+              <div class="highlight-desc">Same-day delivery within Colombo</div>
+            </div>
+          </div>
+          <div class="highlight-item">
+            <div class="highlight-icon">🤝</div>
+            <div>
+              <div class="highlight-title">Trusted Since Day 1</div>
+              <div class="highlight-desc">Hundreds of happy customers & businesses</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="about-values">
+        <div class="value-card">
+          <h4>🎯 Our Mission</h4>
+          <p>To deliver the freshest, tastiest snacks and beverages to every doorstep in Sri Lanka — making quality food accessible to everyone through simple WhatsApp ordering.</p>
+        </div>
+        <div class="value-card">
+          <h4>👁️ Our Vision</h4>
+          <p>To become Sri Lanka's #1 online snack store, known for unbeatable quality, lightning-fast delivery, and a customer-first experience.</p>
+        </div>
+        <div class="value-card">
+          <h4>💎 Our Promise</h4>
+          <p>Every product we sell is fresh, fairly priced, and delivered with a smile. Your satisfaction is our five-star standard.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MAP SECTION ─── -->
+<section class="section" id="location-section">
+  <div class="section-header">
+    <div class="section-title">📍 Our Location</div>
+  </div>
+  <div class="map-container">
+    <iframe src="https://www.google.com/maps?q=Colombo,five star gram store Old Moor Street&output=embed" width="100%" height="280" style="border:0;border-radius:20px;display:block;" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px;">
+    <div style="background:#fff;border-radius:14px;padding:16px;border:1.5px solid #FFE0B2;display:flex;align-items:center;gap:12px;">
+      <span style="font-size:1.5rem;">📍</span>
+      <div>
+        <div style="font-weight:800;font-size:.88rem;">Address</div>
+        <div style="font-size:.8rem;color:var(--muted);">No 104, Old Moor Street, Colombo 12, Sri Lanka</div>
+      </div>
+    </div>
+    <div style="background:#fff;border-radius:14px;padding:16px;border:1.5px solid #FFE0B2;display:flex;align-items:center;gap:12px;">
+      <span style="font-size:1.5rem;">📞</span>
+      <div>
+        <div style="font-weight:800;font-size:.88rem;">Phone / WhatsApp</div>
+        <div style="font-size:.8rem;color:var(--muted);">+94 76 438 1803</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SOCIAL MEDIA ─── -->
+<section class="section" id="contact-section">
+  <div class="social-box">
+    <div class="section-header">
+      <div class="section-title">🌐 Follow & Connect Us</div>
+    </div>
+    <div class="social-minimal">
+      <a href="https://wa.me/94764381803" target="_blank" class="social-link whatsapp">
+        <div class="social-icon-wrap"><i class="fab fa-whatsapp"></i></div>
+        <div class="social-link-info">
+          <span class="social-link-name">WhatsApp</span>
+          <span class="social-link-handle">+94 76 438 1803 · Order Here</span>
+        </div>
+      </a>
+      <a href="https://web.facebook.com/profile.php?id=61577348668246" target="_blank" class="social-link facebook">
+        <div class="social-icon-wrap"><i class="fab fa-facebook-f"></i></div>
+        <div class="social-link-info">
+          <span class="social-link-name">Facebook</span>
+          <span class="social-link-handle">@FiveStarGramStore</span>
+        </div>
+      </a>
+      <a href="https://www.instagram.com/five_stargramstore" target="_blank" class="social-link instagram">
+        <div class="social-icon-wrap"><i class="fab fa-instagram"></i></div>
+        <div class="social-link-info">
+          <span class="social-link-name">Instagram</span>
+          <span class="social-link-handle">@fivestar.gram</span>
+        </div>
+      </a>
+      <a href="tiktok.com/@fivestar.gramstore.lk" target="_blank" class="social-link tiktok">
+        <div class="social-icon-wrap"><i class="fab fa-tiktok"></i></div>
+        <div class="social-link-info">
+          <span class="social-link-name">TikTok</span>
+          <span class="social-link-handle">@fivestargramstore</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section class="faq-section">
+  <div class="section-header">
+    <div class="section-title"> Frequently Asked Questions ❓</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">How do I place an order? <span class="faq-arrow">▼</span></div>
+    <div class="faq-answer">Simply add items to your cart, click "Order via WhatsApp", fill in your details, and hit send! Your order message will be sent directly to our WhatsApp. We'll confirm your order and delivery details within minutes.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">What areas do you deliver to? <span class="faq-arrow">▼</span></div>
+    <div class="faq-answer">We currently deliver across Colombo and suburbs. Delivery charges vary by location and will be confirmed via WhatsApp after you place your order. Pickup is also available from our Pettah store.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">What is the minimum order for wholesale? <span class="faq-arrow">▼</span></div>
+    <div class="faq-answer">Wholesale orders start from 5+ pieces per item. Our wholesale section shows bulk pricing for larger quantities. Contact us via WhatsApp for custom bulk pricing on very large orders.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">How can I pay for my order? <span class="faq-arrow">▼</span></div>
+    <div class="faq-answer">We accept bank transfers (Commercial Bank, Sampath Bank, HNB), cash on delivery, and cash on pickup. After bank transfer, please send your receipt via WhatsApp to confirm your order.</div>
+  </div>
+  <div class="faq-item" onclick="toggleFaq(this)">
+    <div class="faq-question">Are products fresh and quality guaranteed? <span class="faq-arrow">▼</span></div>
+    <div class="faq-answer">Absolutely! All our products are sourced fresh and stored properly. We guarantee the quality of every item we sell. If you're unsatisfied with your purchase, contact us immediately via WhatsApp and we'll make it right.</div>
+  </div>
+</section>
+
+</div><!-- end .page-content -->
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-brand-name">Five-Star Gram Store <span>[Pvt.Ltd]</span> 🍟</div>
+      <p>Your one-stop destination for fresh snacks, sweets & beverages in Colombo. Order via WhatsApp in seconds — retail or wholesale, we've got you covered.</p>
+      <a href="https://wa.me/94764381803" class="footer-wa-btn" target="_blank">
+        <svg width="16" height="16" fill="#fff" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+        Order on WhatsApp
+      </a>
+      <div class="footer-social-icons" style="margin-top:16px;">
+        <a href="https://wa.me/94764381803" class="footer-social-icon" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://web.facebook.com/profile.php?id=61577348668246" class="footer-social-icon" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/five_stargramstore" class="footer-social-icon" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="tiktok.com/@fivestar.gramstore.lk" class="footer-social-icon" target="_blank"><i class="fab fa-tiktok"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>🔗 Quick Links</h4>
+      <ul class="footer-links">
+        <li><a href="#products-section"><span>🛍️</span> Shop Now</a></li>
+        <li><a href="#about-section"><span>ℹ️</span> About Us</a></li>
+        <li><a href="#location-section"><span>📍</span> Our Location</a></li>
+        <li><a href="#bank-section"><span>🏦</span> Bank Details</a></li>
+        <li><a href="#contact-section"><span>🌐</span> Social Media</a></li>
+        <li><a href="https://wa.me/94764381803" target="_blank"><span>💬</span> WhatsApp Us</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>🍟 Categories</h4>
+      <ul class="footer-links">
+        <li><a href="#" onclick="setOrderType('retail',document.getElementById('tab-retail'));scrollToShop();return false;"><span>🍟</span> Bites & Snacks</a></li>
+        <li><a href="#" onclick="setOrderType('retail',document.getElementById('tab-retail'));scrollToShop();return false;"><span>🍩</span> Sweets</a></li>
+        <li><a href="#" onclick="setOrderType('retail',document.getElementById('tab-retail'));scrollToShop();return false;"><span>🥤</span> Drinks</a></li>
+        <li><a href="#" onclick="setOrderType('wholesale',document.getElementById('tab-wholesale'));scrollToShop();return false;"><span>📦</span> Wholesale Bites</a></li>
+        <li><a href="#" onclick="setOrderType('wholesale',document.getElementById('tab-wholesale'));scrollToShop();return false;"><span>📦</span> Wholesale Sweets</a></li>
+        <li><a href="#" onclick="setOrderType('wholesale',document.getElementById('tab-wholesale'));scrollToShop();return false;"><span>📦</span> Wholesale Drinks</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>📞 Contact</h4>
+      <ul class="footer-links">
+        <li><a href="https://wa.me/94764381803" target="_blank"><span>📱</span> +94 76 438 1803</a></li>
+        <li><a href="#location-section"><span>📍</span> No 104, Old Moor Street, Colombo 12</a></li>
+        <li><a href="#"><span>✉️</span>fivestargramstore@gmail.com</a></li>
+      </ul>
+      <div style="margin-top:16px;padding:14px;background:rgba(255,179,0,0.12);border-radius:12px;border:1.5px solid rgba(255,179,0,0.25);">
+        <div style="font-size:.78rem;color:rgba(255,255,255,.6);margin-bottom:4px;">Business Hours</div>
+        <div style="font-size:.88rem;color:#fff;font-weight:700;">🕐 9.00am To 7.30pm</div>
+        <div style="font-size:.78rem;color:rgba(255,255,255,.5);margin-top:4px;">7 Days a Week</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom" style="border-top:1.5px solid rgba(255,255,255,.1);">
+    <div class="footer-bottom-inner">
+      <div>© 2026 <strong>Five-Star Gram Store (Pvt.) Ltd.</strong> All rights reserved.</div> <div>© Designed By <a href="https://asjathaswer.github.io/Designwithme/"> <strong>Designwithme</strong></a> All rights reserved 2025.</div>
+
+      <div style="font-size:.78rem;color:rgba(255,255,255,.35);">Colombo, Sri Lanka · WhatsApp Orders Only</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── OVERLAY ─── -->
+<div class="overlay" id="overlay" onclick="closeCart()"></div>
+
+<!-- ─── CART DRAWER ─── -->
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-head">
+    <h2>🛒 Your Cart</h2>
+    <button class="close-btn" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-body" id="cartBody"></div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span class="cart-total-label">Total</span>
+      <span class="cart-total-price" id="cartTotal">Rs. 0</span>
+    </div>
+    <button class="checkout-btn" id="checkoutBtn" onclick="openCheckout()" disabled>
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48"><path fill="#fff" d="M4.9,43.3l2.7-9.8C5.9,30.6,5,27.3,5,24C5,13.5,13.5,5,24,5c5.1,0,9.8,2,13.4,5.6C41,14.2,43,18.9,43,24c0,10.5-8.5,19-19,19h0c-3.2,0-6.3-0.8-9.1-2.3L4.9,43.3z"/><path fill="#40c351" d="M35.2,12.8c-3-3-6.9-4.6-11.2-4.6C15.3,8.2,8.2,15.3,8.2,24c0,3,0.8,5.9,2.4,8.4L11,33l-1.6,5.8l6-1.6l0.6,0.3c2.4,1.4,5.2,2.2,8,2.2h0c8.7,0,15.8-7.1,15.8-15.8C39.8,19.8,38.2,15.8,35.2,12.8z"/><path fill="#fff" fill-rule="evenodd" d="M19.3,16c-0.4-0.8-0.7-0.8-1.1-0.8c-0.3,0-0.6,0-0.9,0s-0.8,0.1-1.3,0.6c-0.4,0.5-1.7,1.6-1.7,4s1.7,4.6,1.9,4.9s3.3,5.3,8.1,7.2c4,1.6,4.8,1.3,5.7,1.2c0.9-0.1,2.8-1.1,3.2-2.3c0.4-1.1,0.4-2.1,0.3-2.3c-0.1-0.2-0.4-0.3-0.9-0.6s-2.8-1.4-3.2-1.5c-0.4-0.2-0.8-0.2-1.1,0.2c-0.3,0.5-1.2,1.5-1.5,1.9c-0.3,0.3-0.6,0.4-1,0.1c-0.5-0.2-2-0.7-3.8-2.4c-1.4-1.3-2.4-2.8-2.6-3.3c-0.3-0.5,0-0.7,0.2-1c0.2-0.2,0.5-0.6,0.7-0.8c0.2-0.3,0.3-0.5,0.5-0.8c0.2-0.3,0.1-0.6,0-0.8C20.6,19.3,19.7,17,19.3,16z" clip-rule="evenodd"/></svg>
+      Order via WhatsApp
+    </button>
+  </div>
+</div>
+
+<!-- ─── CHECKOUT MODAL ─── -->
+<div class="modal-overlay" id="checkoutModal">
+  <div class="modal">
+    <h2>📋 Your Details</h2>
+    <p class="sub">We'll send your order to the shop via WhatsApp</p>
+    <div class="form-group">
+      <label>Your Name *</label>
+      <input type="text" id="custName" placeholder="e.g. Ahmed" />
+    </div>
+    <div class="form-group">
+      <label>Phone Number *</label>
+      <input type="tel" id="custPhone" placeholder="e.g. 077XXXXXXX" />
+    </div>
+    <div class="form-group">
+      <label>Delivery or Pickup?</label>
+      <div class="radio-group">
+        <label class="radio-opt selected" id="opt-delivery" onclick="selectOpt('delivery')">
+          <input type="radio" name="dtype" value="delivery" checked /> 🚚 Delivery
+        </label>
+        <label class="radio-opt" id="opt-pickup" onclick="selectOpt('pickup')">
+          <input type="radio" name="dtype" value="pickup" /> 🏪 Pickup
+        </label>
+      </div>
+    </div>
+    <div class="form-group" id="addressGroup">
+      <div class="delivery-note" id="deliveryNote">🚚 Delivery charges vary by location. Final amount will be confirmed via WhatsApp.</div>
+      <label>Delivery Address</label>
+      <input type="text" id="custAddress" placeholder="e.g. No. 12, Colombo 10" />
+    </div>
+    <button class="wa-btn" onclick="sendToWhatsApp()">
+      <svg width="22" height="22" fill="#fff" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+      Send Order on WhatsApp
+    </button>
+    <button class="cancel-btn" onclick="closeCheckout()">Cancel</button>
+  </div>
+</div>
+
+<!-- ─── TOAST ─── -->
+<div class="toast" id="toast"></div>
+
+<script>
+const SHOP_PHONE = '+94764381803';
+
+const products = [
+{id:1, name:'Mixture', image:'images/mixture.jpg', price:700, saving:700, category:'retail/bites', desc:'Crunchy mixed snack'},
+{id:2, name:'Special (Red Baby)',image:'images/mixture.jpg', price:700, saving:700, category:'retail/bites', desc:'Spicy premium mixture'},
+{id:3, name:'Baby Mixture', image:'images/babymix.jpg', price:700, saving:700, category:'retail/bites', desc:'Tasty baby mixture'},
+{id:4, name:'Cumminseed Mixture', image:'images/cumminseed.jpg', price:750, saving:650, category:'retail/bites', desc:'Cumin-flavored crispy mixture'},
+{id:5, name:'Ring Bite', image:'images/ringbite.jpg', price:750, saving:450, category:'retail/bites', desc:'Crispy ring-shaped snack'},
+{id:6, name:'Finger Bite', image:'images/fingerbite.jpg', price:750,saving:650,  category:'retail/bites', desc:'Finger-shaped crunchy bites'},
+{id:7, name:'Ribbon Bite', image:'images/ribbon.jpg', price:750, saving:650, category:'retail/bites', desc:'Ribbon-style crunchy snack'},
+{id:8, name:'Onion Bite', image:'images/onionbite.jpg', price:750, saving:450, category:'retail/bites', desc:'Onion flavored crispy bites'},
+{id:9, name:'Garlic Bite', image:'images/garlicbite.jpg', price:750, saving:450, category:'retail/bites', desc:'Garlic flavored crunchy snack'},
+{id:10, name:'Bola Bite', price:750, saving:450, category:'retail/bites', desc:'Round crispy bite snack'},
+{id:11, name:'Kiri Gram', image:'images/kiridhal.jpg', price:670, saving:530, category:'retail/bites', desc:'Milk gram crunchy snack'},
+{id:12, name:'Toor Dhal', image:'images/dhal.jpg', price:650, saving:550, category:'retail/bites', desc:'Crunchy fried dhal snack'},
+{id:13, name:'Oil Peanut', image:'images/oilpeanut.jpg', price:1350, saving:650, category:'retail/bites', desc:'Oil roasted peanuts'},
+{id:14, name:'Roasted Peanut', image:'images/roast.jpg', price:1400, saving:600, category:'retail/bites', desc:'Extra roasted crunchy peanuts'},
+{id:15, name:'Masala Peanut',image:'images/masala.jpg', price:1350, saving:650, category:'retail/bites', desc:'Spicy masala coated peanuts'},
+{id:16, name:'Green Peas', image:'images/Greenpeas.jpg', price:650, saving:550, category:'retail/bites', desc:'Crispy fried green peas'},
+{id:17, name:'Manioc', image:'images/manioc.jpg', price:1000, saving:500, category:'retail/bites', desc:'Spicy fried manioc chips'},
+{id:18, name:'Cheese Manioc', image:'images/cm.jpg', price:1200, saving:600, category:'retail/bites', desc:'Cheesy flavored manioc chips'},
+{id:19, name:'Nuggets', image:'images/nuggets.jpg', price:1300, saving:700, category:'retail/bites', desc:'Crispy chicken nuggets'},
+{id:20, name:'Nuggets Slice', price:1300, saving:700, category:'retail/bites', desc:'Sliced crispy chicken nuggets'},
+{id:21, name:'Sugar Bite',image:'images/Sugarbite.jpg', price:700, saving:800, category:'retail/bites', desc:'Sweet crunchy sugar bites'},
+{id:22, name:'Mango Sugar Bite',image:'images/mangobite.jpg', price:700, saving:800, category:'retail/bites', desc:'Mango flavored sweet bites'},
+{id:23, name:'Strawberry Sugar Bite',image:'images/strawberry.jpg', price:700, saving:800, category:'retail/bites', desc:'Strawberry flavored sweet bites'},
+{id:24, name:'Chilli Bite', image:'images/chillibite.jpg', price:1020, saving:980, category:'retail/bites', desc:'Hot and spicy chilli snack'},
+{id:25, name:'Black Gram', image:'images/blackgram.jpg', price:750, saving:450, category:'retail/bites', desc:'Fried black gram snack'},
+{id:26, name:'Gem Biscuits', image:'images/gem.jpg', price:700, category:'retail/bites', desc:'Colorful crunchy gem biscuits'},
+{id:27, name:'Chilli Biscuits', image:'images/chillibiscuit.jpg', price:850, saving:50, category:'retail/bites', desc:'Spicy crispy biscuits'},
+{id:28, name:'Wine Biscuits', price:800, saving:600, category:'retail/bites', desc:'Sweet soft wine biscuits'},
+
+{id:29, name:'Five Star Special Murukku', image:'images/fivestar.jpg', price:670, saving:130, category:'retail/sweets', desc:'Traditional spicy murukku snack'},
+{id:30, name:'Pani Kaju', image:'images/panikaju.jpg', price:600, saving:150, category:'retail/sweets', desc:'Sweet sugar-coated peanuts'},
+{id:31, name:'Thala Bola', image:'images/thalabola.jpg', price:600, saving:150, category:'retail/sweets', desc:'Traditional sweet sesame balls'},
+{id:32, name:'Bulto', image:'images/bulto.jpg', price:650, saving:100, category:'retail/sweets', desc:'Classic Sri Lankan sweet candy'},
+{id:33, name:'Marshmallow (10/-)', image:'images/mashmellow10.jpg', price:600, saving:150, category:'retail/sweets', desc:'Soft and fluffy marshmallows'},
+{id:34, name:'Marshmallow (20/-)', image:'images/mashmellow20.jpg', price:770, saving:230, category:'retail/sweets', desc:'Large pack marshmallows'},
+{id:35, name:'Marshmallow Corn', image:'images/icecorn.jpg', price:520, saving:80, category:'retail/sweets', desc:'Sweet marshmallow corn snack'},
+{id:36, name:'Kisses', image:'images/kisses.jpg',price:600, saving:150, category:'retail/sweets', desc:'Chocolate flavored candy kisses'},
+{id:37, name:'Ghee Biscuit (10/-)', image:'images/ghee.jpg', price:600, saving:150, category:'retail/sweets', desc:'Ghee flavored crispy biscuits'},
+{id:38, name:'Ghee Biscuit (20/-)', image:'images/ghee20.jpg', price:770, saving:230, category:'retail/sweets', desc:'Large pack ghee biscuits'},
+{id:39, name:'Peanut Ghee Biscuit (10/-)', image:'images/peanutghee.jpg', price:620, saving:130, category:'retail/sweets', desc:'Peanut and ghee mixed biscuits'},
+{id:40, name:'Peanut Ghee Biscuit (20/-)', image:'images/peanutghee20.jpg',price:770, saving:230, category:'retail/sweets', desc:'Large pack peanut ghee biscuits'},
+{id:41, name:'Gal Musket (10/-)', image:'images/galmusket.jpg', price:600, saving:150, category:'retail/sweets', desc:'Traditional sugar musket sweet'},
+{id:42, name:'Gal Musket (20/-)', image:'images/galmusket.jpg', price:770, saving:230, category:'retail/sweets', desc:'Large pack musket sweets'},
+{id:43, name:'Musket', image:'images/Musket.jpg', price:650, saving:100, category:'retail/sweets', desc:'Classic musket sweet pack'},
+{id:44, name:'Rulang (20/-)', image:'images/rulan20.jpg', price:770, saving:230, category:'retail/sweets', desc:'Traditional rulang candy'},
+{id:45, name:'Rulang Aluwa', image:'images/alwa.jpg', price:650, saving:150, category:'retail/sweets', desc:'Soft aluwa sweet'},
+{id:46, name:'Mall Pori', image:'images/pori.jpg', price:600, saving:150, category:'retail/sweets', desc:'Sweet puffed rice snack'},
+{id:47, name:'Lollipop (10/-)', image:'images/lolipop10.jpg', price:600, saving:150, category:'retail/sweets', desc:'Sweet candy lollipops'},
+{id:48, name:'Lollipop (20/-)', image:'images/lolipop20.jpg', price:770, saving:230, category:'retail/sweets', desc:'Large pack lollipops'},
+{id:49, name:'Peppermint', image:'images/peppermint.jpg', price:760, saving:240, category:'retail/sweets', desc:'Cool mint flavored candy'},
+{id:50, name:'Poll Toffee', image:'images/kiritoffee.jpg', price:600, saving:150, category:'retail/sweets', desc:'Coconut flavored toffee'},
+{id:51, name:'X Toffee', image:'images/xtoffee.jpg', price:770, saving:230, category:'retail/sweets', desc:'Assorted flavored toffee'},
+{id:52, name:'Layer Toffee', image:'images/layertoffee.jpg', price:650, saving:150, category:'retail/sweets', desc:'Double layer colorful toffee'},
+{id:53, name:'Kiri Toffee', image:'images/kiri.jpg', price:650, saving:100, category:'retail/sweets', desc:'Milk flavored soft toffee'},
+{id:54, name:'Banana Toffee', image:'images/banana.jpg', price:650, saving:100, category:'retail/sweets', desc:'Banana flavored toffee'},
+{id:55, name:'My Lady Toffee', image:'images/mylady.jpg',price:650, saving:100, category:'retail/sweets', desc:'Milk and mint flavored toffee'},
+{id:56, name:'Coffee Toffee', image:'images/toffee.jpg', price:650, saving:100, category:'retail/sweets', desc:'Coffee flavored toffee'},
+{id:57, name:'Golden Fruits Toffee', image:'images/goldenfruits.jpg', price:750, saving:250, category:'retail/sweets', desc:'Mixed fruit imported toffee'},
+{id:58, name:'Mix Fruits Toffee', image:'images/mixfruits.jpg', price:750, saving:250, category:'retail/sweets', desc:'Assorted fruit flavored toffee'},
+{id:59, name:'Sugar Ball', image:'images/sugarball.jpg', price:770, saving:230, category:'retail/sweets', desc:'Colorful sugar candy balls'},
+{id:60, name:'Choco Balls', image:'images/chocoball.jpg', price:770, saving:230, category:'retail/sweets', desc:'Chocolate coated sweet balls'},
+{id:61, name:'Cup Cake', image:'images/cupcake.jpg', price:770, saving:230, category:'retail/sweets', desc:'Soft and fluffy cupcake'},
+
+{id:62, name:'Vibe Kiwi', image:'images/vibe kiwi.jpeg', price:130, saving:20, category:'retail/drinks', desc:'Refreshing kiwi flavored drink'},
+{id:63, name:'Vibe Apple', image:'images/vibe apple.jpeg', price:130, saving:20, category:'retail/drinks', desc:'Sweet apple flavored drink'},
+{id:64, name:'Vibe Orange Crush', image:'images/vibe orange.jpeg', price:130, saving:20, category:'retail/drinks', desc:'Orange flavored soft drink'},
+{id:65, name:'Vibe Graphs', image:'images/vibe graphs.jpeg', price:130, saving:20, category:'retail/drinks', desc:'Mixed fruit flavored drink'},
+{id:66, name:'Campa Energy Drink', image:'images/campa energy.jpeg', price:240, saving:10, category:'retail/drinks', desc:'Boosting energy drink'},
+{id:67, name:'Elephant House Cream Soda', image:'images/Eh cream soda.jpeg', price:130, saving:20, category:'retail/drinks', desc:'Classic cream soda drink'},
+{id:68, name:'Elephant House Necto', image:'images/Eh Necto.jpeg', price:130, saving:20, category:'retail/drinks', desc:'Sweet necto flavored drink'},
+{id:69, name:'Elephant House EGB', image:'images/Eh EGB.jpeg', price:130, saving:20, category:'retail/drinks', desc:'Elephant ginger beer drink'},
+{id:70, name:'Elephant House Orange Crush', image:'images/Eh orange crush.jpeg', price:130, saving:20, category:'retail/drinks', desc:'Refreshing orange crush drink'},
+{id:71, name:'Goli Soda Kiwi', image:'images/kiwi.jpg', price:150, saving:20,  category:'retail/drinks', desc:'Kiwi mint soda drink'},
+{id:72, name:'Goli Soda Green Apple', image:'images/golisodaapple.jpg', price:150, saving:20, category:'retail/drinks', desc:'Green apple soda drink'},
+{id:73, name:'Goli Soda Strawberry', image:'images/stawberry.jpg', price:150, saving:20, category:'retail/drinks', desc:'Strawberry soda drink'},
+{id:74, name:'Goli Soda Blueberry Mint', image:'images/blueberry.jpg', price:150, saving:20, category:'retail/drinks', desc:'Blueberry mint soda'},
+{id:75, name:'Goli Soda Pineapple', image:'images/pineapple.jpg', price:150, saving:20, category:'retail/drinks', desc:'Pineapple soda drink'},
+
+{id:76, name:'YEZ Orange (310ml)',image:'images/orange310.jpg', price:110, saving:10, category:'retail/drinks', desc:'Refreshing Orange soft drink'},
+{id:77, name:'YEZ Orange (750ml)',image:'images/orange750.jpg', price:170, saving:10, category:'retail/drinks', desc:'Refreshing Orange soft drink'},
+{id:78, name:'YEZ Orange (1.5l)',image:'images/orange1.5.jpg', price:320, saving:30, category:'retail/drinks', desc:'Refreshing Orange soft drink'},
+
+{id:79, name:'YEZ Necto (310ml)',image:'images/necto310.jpg', price:110, saving:10, category:'retail/drinks', desc:'Sweet necto flavored soft drink'},
+{id:80, name:'YEZ Necto (750ml)',image:'images/necto750.jpg', price:170, saving:10, category:'retail/drinks', desc:'Sweet necto flavored soft drink'},
+{id:81, name:'YEZ Necto (1.5l)',image:'images/necto1.5.jpg', price:320, saving:30, category:'retail/drinks', desc:'Sweet necto flavored soft drink'},
+
+{id:82, name:'YEZ Cream Soda (310ml)',image:'images/cream310.jpg', price:110, saving:10, category:'retail/drinks', desc:'Classic cream soda soft drink'},
+{id:83, name:'YEZ Cream Soda (750ml)',image:'images/cream750.jpg', price:170, saving:10, category:'retail/drinks', desc:'Classic cream soda soft drink'},
+{id:84, name:'YEZ Cream Soda (1.5l)',image:'images/cream1.5.jpg', price:320, saving:30, category:'retail/drinks', desc:'Classic cream soda soft drink'},
+
+{id:85, name:'YEZ Coca Cola (310ml)',image:'images/coco310.jpg', price:110, saving:10, category:'retail/drinks', desc:'Refreshing cola flavored soft drink'},
+{id:86, name:'YEZ Coca Cola (750ml)',image:'images/coco750.jpg', price:170, saving:10, category:'retail/drinks', desc:'Refreshing cola flavored soft drink'},
+{id:87, name:'YEZ Coca Cola (1.5l)',image:'images/coco1.5.jpg', price:320, saving:30, category:'retail/drinks', desc:'Refreshing cola flavored soft drink'},
+
+{id:88, name:'YEZ EGB (310ml)',image:'images/egb310.jpg', price:110, saving:10, category:'retail/drinks', desc:'Ginger beer flavored soft drink'},
+{id:89, name:'YEZ EGB (750ml)',image:'images/egb750.jpg', price:170, saving:10, category:'retail/drinks', desc:'Ginger beer flavored soft drink'},
+{id:90, name:'YEZ EGB (1.5l)',image:'images/egb1.5.jpg', price:320, saving:30, category:'retail/drinks', desc:'Ginger beer flavored soft drink'},
+
+
+{id:150, name:'Mixture', image:'images/mixture.jpg', price:570, saving:830, category:'wholesale/bites', desc:'Crunchy mixed snack'},
+{id:151, name:'Special (Red Baby)',image:'images/mixture.jpg', price:670, saving:730, category:'wholesale/bites', desc:'Spicy premium mixture'},
+{id:152, name:'Baby Mixture', image:'images/babymix.jpg', price:670, saving:730, category:'wholesale/bites', desc:'Tasty baby mixture'},
+{id:153, name:'Cumminseed Mixture', image:'images/cumminseed.jpg', price:650, saving:750, category:'wholesale/bites', desc:'Cumin flavored mixture '},
+{id:154, name:'Ring Bite', image:'images/ringbite.jpg', price:650, saving:550, category:'wholesale/bites', desc:'Crispy ring snack '},
+{id:155, name:'Finger Bite', image:'images/fingerbite.jpg', price:650, saving:550, category:'wholesale/bites', desc:'Finger-shaped bites '},
+{id:156, name:'Ribbon Bite', image:'images/ribbon.jpg', price:650, saving:750, category:'wholesale/bites', desc:'Ribbon snack'},
+{id:157, name:'Onion Bite', image:'images/onionbite.jpg', price:650, saving:550, category:'wholesale/bites', desc:'Onion flavored bites'},
+{id:243, name:'Kattu Bite', image:'images/Katubite.jpg', price:650, saving:750, category:'wholesale/bites', desc:'Garlic crunchy bites '},
+{id:158, name:'Garlic Bite', image:'images/garlicbite.jpg', price:670, saving:530, category:'wholesale/bites', desc:'Garlic crunchy bites '},
+{id:159, name:'Bola Bite', price:650, saving:550, category:'wholesale/bites', desc:'Round crispy bites '},
+{id:160, name:'Kiri Gram', image:'images/kiridhal.jpg', price:570, saving:630, category:'wholesale/bites', desc:'Milk gram snack '},
+{id:161, name:'Toor Dhal', image:'images/dhal.jpg', price:550, saving:650, category:'wholesale/bites', desc:'Crunchy dhal snack '},
+{id:162, name:'Oil Peanut', image:'images/oilpeanut.jpg', price:1280, saving:720, category:'wholesale/bites', desc:'Oil roasted peanuts '},
+{id:163, name:'Roasted Peanut', image:'images/roast.jpg', price:1300, saving:700, category:'wholesale/bites', desc:'Roasted peanuts '},
+{id:164, name:'Masala Peanut',image:'images/masala.jpg', price:1250, saving:750, category:'wholesale/bites', desc:'Masala peanuts '},
+{id:165, name:'Green Peas', image:'images/Greenpeas.jpg', price:570, saving:630, category:'wholesale/bites', desc:'Crispy green peas'},
+{id:166, name:'Manioc', image:'images/manioc.jpg', price:900, saving:600, category:'wholesale/bites', desc:'Spicy manioc chips '},
+{id:167, name:'Cheese Manioc', image:'images/cm.jpg', price:1100, saving:700, category:'wholesale/bites', desc:'Cheese manioc '},
+{id:168, name:'Nuggets', image:'images/nuggets.jpg', price:1250, saving:750, category:'wholesale/bites', desc:'Chicken nuggets'},
+{id:169, name:'Nuggets Slice', price:1250, saving:750, category:'wholesale/bites', desc:'Sliced nuggets'},
+{id:170, name:'Sugar Bite',image:'images/Sugarbite.jpg', price:620, saving:880, category:'wholesale/bites', desc:'Sweet sugar bites'},
+{id:171, name:'Mango Sugar Bite',image:'images/mangobite.jpg', price:620, saving:880, category:'wholesale/bites', desc:'Mango sugar bites'},
+{id:172, name:'Strawberry Sugar Bite',image:'images/strawberry.jpg', price:620, saving:880, category:'wholesale/bites', desc:'Strawberry sugar bites'},
+{id:173, name:'Chilli Bite', image:'images/chillibite.jpg', price:920, saving:1080, category:'wholesale/bites', desc:'Spicy chilli snack'},
+{id:174, name:'Black Gram', image:'images/blackgram.jpg', price:650, saving:550, category:'wholesale/bites', desc:'Fried black gram '},
+{id:175, name:'Gem Biscuits', image:'images/gem.jpg', price:630, saving:70, category:'wholesale/bites', desc:'Gem biscuits '},
+{id:176, name:'Chilli Biscuits', image:'images/chillibiscuit.jpg', price:750, saving:150, category:'wholesale/bites', desc:'Spicy biscuits '},
+{id:177, name:'Wine Biscuits', price:600, saving:800, category:'wholesale/bites', desc:'Sweet biscuits'},
+{id:177, name:'Hot Spicy Chips', image:'images/chips.jpg',price:1200, saving:300, category:'wholesale/bites', desc:'30pcs Hot Chips Packet'},
+
+{id:178, name:'Five Star Special Murukku', image:'images/fivestar.jpg', price:570, saving:230, category:'wholesale/sweets', desc:'Murukku snack'},
+{id:179, name:'Pani Kaju', image:'images/panikaju.jpg', price:500, saving:250, category:'wholesale/sweets', desc:'Sugar coated peanuts '},
+{id:180, name:'Thala Bola', image:'images/thalabola.jpg', price:500, saving:250, category:'wholesale/sweets', desc:'Sesame balls (20 pcs case)'},
+{id:181, name:'Bulto', image:'images/bulto.jpg', price:600, saving:150, category:'wholesale/sweets', desc:'Traditional sweet (20 pcs case)'},
+{id:182, name:'Marshmallow (10/-)', image:'images/mashmellow10.jpg', price:500, saving:250, category:'wholesale/sweets', desc:'Marshmallow small (30 pcs case)'},
+{id:183, name:'Marshmallow (20/-)', image:'images/mashmellow20.jpg', price:670, saving:330, category:'wholesale/sweets', desc:'Marshmallow large (20 pcs case)'},
+{id:184, name:'Marshmallow Corn', image:'images/icecorn.jpg', price:420, saving:180, category:'wholesale/sweets', desc:'Marshmallow corn (25 pcs case)'},
+{id:185, name:'Kisses', image:'images/kisses.jpg',price:500, saving:250, category:'wholesale/sweets', desc:'Chocolate kisses (20 pcs case)'},
+{id:186, name:'Ghee Biscuit (10/-)', image:'images/ghee.jpg', price:500, saving:250, category:'wholesale/sweets', desc:'Ghee biscuits small (20 pcs case)'},
+{id:187, name:'Ghee Biscuit (20/-)', image:'images/ghee20.jpg', price:670, saving:330, category:'wholesale/sweets', desc:'Ghee biscuits large (20 pcs case)'},
+{id:188, name:'Peanut Ghee Biscuit (10/-)', image:'images/peanutghee.jpg', price:520, saving:230, category:'wholesale/sweets', desc:'Peanut ghee biscuits (20 pcs case)'},
+{id:189, name:'Peanut Ghee Biscuit (20/-)', image:'images/peanutghee20.jpg',price:670, saving:330, category:'wholesale/sweets', desc:'Peanut ghee biscuits large (20 pcs case)'},
+{id:190, name:'Gal Musket (10/-)', image:'images/galmusket.jpg', price:500, saving:250, category:'wholesale/sweets', desc:'Musket small (20 pcs case)'},
+{id:191, name:'Gal Musket (20/-)', image:'images/galmusket.jpg', price:670, saving:330, category:'wholesale/sweets', desc:'Musket large (20 pcs case)'},
+{id:192, name:'Musket', image:'images/Musket.jpg', price:550, saving:200, category:'wholesale/sweets', desc:'Musket pack (15 pcs case)'},
+{id:193, name:'Rulang (20/-)', image:'images/rulan20.jpg', price:670, saving:330, category:'wholesale/sweets', desc:'Rulang candy (20 pcs case)'},
+{id:194, name:'Rulang Aluwa', image:'images/alwa.jpg', price:550, saving:250, category:'wholesale/sweets', desc:'Aluwa sweet (15 pcs case)'},
+{id:195, name:'Mall Pori', image:'images/pori.jpg', price:550, saving:250, category:'wholesale/sweets', desc:'Puffed rice sweet (20 pcs case)'},
+{id:196, name:'Lollipop (10/-)', image:'images/lolipop10.jpg', price:500, saving:250, category:'wholesale/sweets', desc:'Lollipop small (30 pcs case)'},
+{id:197, name:'Lollipop (20/-)', image:'images/lolipop20.jpg', price:670, saving:330, category:'wholesale/sweets', desc:'Lollipop large (20 pcs case)'},
+{id:198, name:'Peppermint', image:'images/peppermint.jpg', price:660, saving:340, category:'wholesale/sweets', desc:'Mint candy (20 pcs case)'},
+{id:199, name:'Poll Toffee', image:'images/kiritoffee.jpg', price:500, saving:250, category:'wholesale/sweets', desc:'Coconut toffee (20 pcs case)'},
+{id:200, name:'X Toffee', image:'images/xtoffee.jpg', price:670, saving:330, category:'wholesale/sweets', desc:'Mixed toffee (20 pcs case)'},
+{id:201, name:'Layer Toffee', image:'images/layertoffee.jpg', price:550, saving:250, category:'wholesale/sweets', desc:'Layer toffee (20 pcs case)'},
+{id:202, name:'Kiri Toffee', image:'images/kiri.jpg', price:550, saving:200, category:'wholesale/sweets', desc:'Milk toffee (20 pcs case)'},
+{id:203, name:'Banana Toffee', image:'images/banana.jpg', price:550, saving:200, category:'wholesale/sweets', desc:'Banana toffee (20 pcs case)'},
+{id:204, name:'My Lady Toffee', image:'images/mylady.jpg',price:550, saving:200, category:'wholesale/sweets', desc:'Milk mint toffee (20 pcs case)'},
+{id:205, name:'Coffee Toffee', image:'images/toffee.jpg', price:550, saving:200, category:'wholesale/sweets', desc:'Coffee toffee (20 pcs case)'},
+{id:206, name:'Golden Fruits Toffee', image:'images/goldenfruits.jpg', price:650, saving:350, category:'wholesale/sweets', desc:'Fruit toffee (20 pcs case)'},
+{id:207, name:'Mix Fruits Toffee', image:'images/mixfruits.jpg', price:650, saving:350, category:'wholesale/sweets', desc:'Mixed fruit toffee (20 pcs case)'},
+{id:208, name:'Sugar Ball', image:'images/sugarball.jpg', price:670, saving:330, category:'wholesale/sweets', desc:'Sugar balls (20 pcs case)'},
+{id:209, name:'Choco Balls', image:'images/chocoball.jpg', price:670, saving:330, category:'wholesale/sweets', desc:'Chocolate balls (20 pcs case)'},
+{id:210, name:'Cup Cake', image:'images/cupcake.jpg', price:670, saving:330, category:'wholesale/sweets', desc:'Cupcake pack (15 pcs case)'},
+
+{id:211, name:'Vibe Kiwi', image:'images/vibe kiwi.jpeg', price:2760, saving:840, category:'wholesale/drinks', desc:'Kiwi drink (24pcs case)'},
+{id:212, name:'Vibe Apple', image:'images/vibe apple.jpeg', price:2760, saving:840, category:'wholesale/drinks', desc:'Apple drink (24pcs case)'},
+{id:213, name:'Vibe Orange Crush', image:'images/vibe orange.jpeg', price:2760, saving:840, category:'wholesale/drinks', desc:'Orange drink (24pcs case)'},
+{id:214, name:'Vibe Graphs', image:'images/vibe graphs.jpeg', price:2760, saving:840, category:'wholesale/drinks', desc:'Mixed fruit drink (24pcs case)'},
+{id:215, name:'Campa Energy Drink', image:'images/campa energy.jpeg', price:5280, saving:720, category:'wholesale/drinks', desc:'Energy drink (24pcs case)'},
+{id:216, name:'Elephant House Cream Soda', image:'images/Eh cream soda.jpeg', price:2760, saving:840, category:'wholesale/drinks', desc:'Cream soda (24pcs case)'},
+{id:217, name:'Elephant House Necto', image:'images/Eh Necto.jpeg', price:2760, saving:840, category:'wholesale/drinks', desc:'Necto drink (24pcs case)'},
+{id:218, name:'Elephant House EGB', image:'images/Eh EGB.jpeg', price:2760, saving:840, category:'wholesale/drinks', desc:'Ginger beer (24pcs case)'},
+{id:219, name:'Elephant House Orange Crush', image:'images/Eh orange crush.jpeg', price:2760, saving:840, category:'wholesale/drinks', desc:'Orange crush (24pcs case)'},
+{id:220, name:'Goli Soda Kiwi', image:'images/kiwi.jpg', price:2760, saving:640, category:'wholesale/drinks', desc:'Kiwi soda (20pcs case)'},
+{id:221, name:'Goli Soda Green Apple', image:'images/golisodaapple.jpg', price:2760, saving:640, category:'wholesale/drinks', desc:'Apple soda (20pcs case)'},
+{id:225, name:'Goli Soda Strawberry', image:'images/stawberry.jpg', price:2760, saving:640, category:'wholesale/drinks', desc:'Strawberry soda drink (20pcs case)'},
+{id:226, name:'Goli Soda Blueberry Mint', image:'images/blueberry.jpg', price:2760, saving:640, category:'wholesale/drinks', desc:'Blueberry mint soda (20pcs case)'},
+{id:227, name:'Goli Soda Pineapple', image:'images/pineapple.jpg', price:2760, saving:640, category:'wholesale/drinks', desc:'Pineapple soda drink (20pcs case)'},
+
+{id:228, name:'YEZ Orange (310ml)',image:'images/orange310.jpg', price:2448, saving:432, category:'wholesale/drinks', desc:'Refreshing orange soft drink (24pcs case)'},
+{id:229, name:'YEZ Orange (750ml)',image:'images/orange750.jpg', price:1836, saving:324, category:'wholesale/drinks', desc:'Refreshing orange soft drink (12pcs case)'},
+{id:230, name:'YEZ Orange (1.5L)',image:'images/orange1.5.jpg', price:3570, saving:630, category:'wholesale/drinks', desc:'Refreshing orange soft drink (12pcs case)'},
+
+{id:231, name:'YEZ Necto (310ml)',image:'images/necto310.jpg', price:2448, saving:432, category:'wholesale/drinks', desc:'Sweet necto flavored soft drink (24pcs case)'},
+{id:232, name:'YEZ Necto (750ml)',image:'images/necto750.jpg', price:1836, saving:324, category:'wholesale/drinks', desc:'Sweet necto flavored soft drink (12pcs case)'},
+{id:233, name:'YEZ Necto (1.5L)',image:'images/necto1.5.jpg', price:3570, saving:630, category:'wholesale/drinks', desc:'Sweet necto flavored soft drink (12pcs case)'},
+
+{id:234, name:'YEZ Cream Soda (310ml)',image:'images/cream310.jpg', price:2448, saving:432, category:'wholesale/drinks', desc:'Classic cream soda soft drink (24pcs case)'},
+{id:235, name:'YEZ Cream Soda (750ml)',image:'images/cream750.jpg', price:1836, saving:324, category:'wholesale/drinks', desc:'Classic cream soda soft drink (12pcs case)'},
+{id:236, name:'YEZ Cream Soda (1.5L)',image:'images/cream1.5.jpg', price:3570, saving:630, category:'wholesale/drinks', desc:'Classic cream soda soft drink (12pcs case)'},
+
+{id:237, name:'YEZ Coca Cola (310ml)',image:'images/coco310.jpg', price:2448, saving:432, category:'wholesale/drinks', desc:'Refreshing cola flavored soft drink (24pcs case)'},
+{id:238, name:'YEZ Coca Cola (750ml)',image:'images/coco750.jpg', price:1836, saving:324, category:'wholesale/drinks', desc:'Refreshing cola flavored soft drink (12pcs case)'},
+{id:239, name:'YEZ Coca Cola (1.5L)',image:'images/coco1.5.jpg', price:3570, saving:630, category:'wholesale/drinks', desc:'Refreshing cola flavored soft drink (12pcs case)'},
+
+{id:240, name:'YEZ EGB (310ml)',image:'images/egb310.jpg', price:2448, saving:432, category:'wholesale/drinks', desc:'Ginger beer flavored soft drink (24pcs case)'},
+{id:241, name:'YEZ EGB (750ml)',image:'images/egb750.jpg', price:1836, saving:324, category:'wholesale/drinks', desc:'Ginger beer flavored soft drink (12pcs case)'},
+{id:242, name:'YEZ EGB (1.5L)',image:'images/egb1.5.jpg', price:3570, saving:630, category:'wholesale/drinks', desc:'Ginger beer flavored soft drink (12pcs case)'},
+];
+
+let cart = {};
+let currentOrderType = 'retail';
+let currentSubCat = 'all';
+
+const catTabsConfig = [
+  {key:'all', label:'🍽️ All'},
+  {key:'bites', label:'🍟 Bites'},
+  {key:'sweets', label:'🍩 Sweets'},
+  {key:'drinks', label:'🥤 Drinks'},
+];
+
+function setOrderType(type, el) {
+  currentOrderType = type;
+  currentSubCat = 'all';
+  document.querySelectorAll('.order-type-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('searchInput').value = '';
+  buildCatTabs();
+  renderProducts();
+}
+
+function buildCatTabs() {
+  const container = document.getElementById('catTabs');
+  container.innerHTML = catTabsConfig.map(c => `
+    <button class="cat-tab ${c.key === currentSubCat ? 'active' : ''}" onclick="setSubCat('${c.key}', this)">${c.label}</button>
+  `).join('');
+}
+
+function setSubCat(key, el) {
+  currentSubCat = key;
+  document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('searchInput').value = '';
+  renderProducts();
+}
+
+function renderProducts() {
+  const q = document.getElementById('searchInput').value.toLowerCase().trim();
+  const grid = document.getElementById('productsGrid');
+  let filtered = products.filter(p => {
+    const [otype, scat] = p.category.split('/');
+    return otype === currentOrderType &&
+      (currentSubCat === 'all' || scat === currentSubCat) &&
+      (!q || p.name.toLowerCase().includes(q) || p.desc.toLowerCase().includes(q));
+  });
+  if (!filtered.length) {
+    grid.innerHTML = `<div class="no-results"><span>😕</span>No items found${q ? ` for "${q}"` : ''}</div>`;
+    return;
+  }
+  grid.innerHTML = filtered.map((p, i) => {
+    const imgHtml = p.image
+      ? `<img src="${p.image}" alt="${p.name}" onerror="this.parentElement.innerHTML='<span class=emoji-fallback>${p.emoji||'🍽️'}</span>'">`
+      : `<span class="emoji-fallback">${p.emoji || '🍽️'}</span>`;
+    return `
+      <div class="product-card" style="animation-delay:${i * 0.04}s">
+        ${p.saving ? `<div class="save-badge">Save Rs. ${p.saving}</div>` : ''}
+        <div class="product-img">${imgHtml}</div>
+        <div class="product-info">
+          <div class="product-name">${p.name}</div>
+          <div class="product-desc">${p.desc}</div>
+          <div class="product-footer">
+            <div class="price-wrap">
+              ${p.saving
+                ? `<div class="old-price">Rs. ${(p.price + p.saving).toLocaleString()}</div><div class="new-price">Rs. ${p.price.toLocaleString()}</div>`
+                : `<div class="new-price">Rs. ${p.price.toLocaleString()}</div>`}
+            </div>
+            <button class="add-btn" id="addBtn${p.id}" onclick="addToCart(${p.id})" title="Add to cart">+</button>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function addToCart(id) {
+  cart[id] = (cart[id] || 0) + 1;
+  updateCartUI();
+  const btn = document.getElementById('addBtn' + id);
+  if (btn) { btn.classList.add('added'); setTimeout(() => btn.classList.remove('added'), 400); }
+  showToast(`${products.find(x=>x.id===id).name} added! 🛒`);
+}
+
+function updateCartQty(id, delta) {
+  cart[id] = (cart[id] || 0) + delta;
+  if (cart[id] <= 0) delete cart[id];
+  updateCartUI();
+  renderCartBody();
+}
+
+function removeFromCart(id) {
+  delete cart[id];
+  updateCartUI();
+  renderCartBody();
+}
+
+function updateCartUI() {
+  const total = Object.values(cart).reduce((a, b) => a + b, 0);
+  const el = document.getElementById('cartCount');
+  el.textContent = total;
+  el.classList.toggle('show', total > 0);
+  document.getElementById('checkoutBtn').disabled = total === 0;
+}
+
+function renderCartBody() {
+  const body = document.getElementById('cartBody');
+  const keys = Object.keys(cart).map(Number);
+  if (!keys.length) {
+    body.innerHTML = `<div class="cart-empty"><span class="empty-emoji">🛒</span><p>Your cart is empty.<br>Add something tasty!</p></div>`;
+    document.getElementById('cartTotal').textContent = 'Rs. 0';
+    return;
+  }
+  let total = 0;
+  body.innerHTML = keys.map(id => {
+    const p = products.find(x => x.id === id);
+    const sub = p.price * cart[id];
+    total += sub;
+    const imgContent = p.image ? `<img src="${p.image}" onerror="this.style.display='none'">` : `<span style="font-size:1.8rem">${p.emoji||'🍽️'}</span>`;
+    return `<div class="cart-item">
+      <div class="cart-item-image">${imgContent}</div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${p.name}</div>
+        <div class="cart-item-price">Rs. ${p.price.toLocaleString()} × ${cart[id]} = <strong>Rs. ${sub.toLocaleString()}</strong></div>
+      </div>
+      <div class="qty-control">
+        <button class="qty-btn" onclick="updateCartQty(${id},-1)">−</button>
+        <span class="qty-num">${cart[id]}</span>
+        <button class="qty-btn" onclick="updateCartQty(${id},1)">+</button>
+      </div>
+      <button class="remove-item" onclick="removeFromCart(${id})" title="Remove">🗑️</button>
+    </div>`;
+  }).join('');
+  document.getElementById('cartTotal').textContent = `Rs. ${total.toLocaleString()}`;
+}
+
+function toggleCart() { openCart(); }
+function openCart() {
+  renderCartBody();
+  document.getElementById('cartDrawer').classList.add('open');
+  document.getElementById('overlay').classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeCart() {
+  document.getElementById('cartDrawer').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+let deliveryType = 'delivery';
+function openCheckout() { closeCart(); document.getElementById('checkoutModal').classList.add('show'); }
+function closeCheckout() { document.getElementById('checkoutModal').classList.remove('show'); }
+
+function selectOpt(type) {
+  deliveryType = type;
+  document.getElementById('opt-delivery').classList.toggle('selected', type === 'delivery');
+  document.getElementById('opt-pickup').classList.toggle('selected', type === 'pickup');
+  document.getElementById('addressGroup').style.display = type === 'delivery' ? '' : 'none';
+  document.getElementById('deliveryNote').style.display = type === 'delivery' ? 'block' : 'none';
+}
+
+function sendToWhatsApp() {
+  const name = document.getElementById('custName').value.trim();
+  const phone = document.getElementById('custPhone').value.trim();
+  const address = document.getElementById('custAddress').value.trim();
+  if (!name) { showToast('⚠️ Please enter your name'); return; }
+  if (!phone) { showToast('⚠️ Please enter your phone number'); return; }
+  const keys = Object.keys(cart).map(Number);
+  if (!keys.length) { showToast('⚠️ Cart is empty'); return; }
+  let total = 0;
+  let orderLines = keys.map(id => {
+    const p = products.find(x => x.id === id);
+    total += p.price * cart[id];
+    return `- ${p.name} x${cart[id]} (Rs. ${(p.price * cart[id]).toLocaleString()})`;
+  }).join('\n');
+  let msg = `Hello Five-Star Gram Store! 👋\n\nI'd like to place an order:\n\nName: ${name}\nPhone: ${phone}\n\n*Order:*\n${orderLines}\n\n*Total: Rs. ${total.toLocaleString()}*\n\n`;
+  msg += deliveryType === 'delivery' ? `🚚 Delivery\nAddress: ${address || 'To be confirmed'}` : `🏪 Pickup from store`;
+  window.open(`https://wa.me/${SHOP_PHONE}?text=${encodeURIComponent(msg)}`, '_blank');
+  closeCheckout();
+  cart = {};
+  updateCartUI();
+  showToast('✅ Order sent! Check WhatsApp');
+}
+
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2500);
+}
+
+function copyAccount(id) {
+  navigator.clipboard.writeText(document.getElementById(id).textContent);
+  showToast('✅ Account number copied!');
+}
+
+function toggleFaq(item) {
+  item.classList.toggle('open');
+}
+
+function scrollToShop() {
+  document.getElementById('products-section').scrollIntoView({behavior:'smooth'});
+}
+
+buildCatTabs();
+renderProducts();
+updateCartUI();
+document.getElementById('deliveryNote').style.display = 'block';
+</script>
+</body>
+</html>
